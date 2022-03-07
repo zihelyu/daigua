@@ -1,0 +1,158 @@
+<aside class="fixed skin-3">
+    <div class="sidebar-inner scrollable-sidebar">
+        <div class="size-toggle">
+            <a class="btn btn-sm" id="sizeToggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="btn btn-sm pull-right" href="{:url('index/Index/logout')}" onclick="return confirm('确认退出登录？');">
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div><!-- /size-toggle -->
+        <div class="user-block clearfix">
+            <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160" alt="User Avatar">
+            <div class="detail">
+                <strong>{$userInfo.user}[管理员]</strong>
+                <ul class="list-inline">
+                    <li><span class="badge badge-danger m-left-xs bounceIn animation-delay4">UID:{$userInfo.uid}</span>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /user-block -->
+
+        <div class="main-menu">
+            <ul>
+                <li class="{:checkIfActive('index')}">
+                    <a href="{:url('index')}">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i>
+								</span>
+								<span class="text">
+									管理后台
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+                <li class="{:checkIfActive('mainset,emailset,selectmb,payset,webset,priceset,appset')} openable open">
+                    <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-edit fa-lg"></i>
+								</span>
+								<span class="text">
+									站点配置
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                    <ul class="submenu">
+                        {if condition="ZID eq 1"}
+						<li><a href="{:url('mainSet')}"><i class="fa fa-home"></i> 主站配置</a></li>
+						<li><a href="{:url('emailSet')}"><i class="fa fa-envelope"></i> 邮箱配置</a></li>
+						<!--li><a href="{:url('setDhbl')}"><i class="fa fa-exchange"></i> 元宝兑换比例</a></li-->
+						<li><a href="{:url('selectMb')}"><i class="fa fa-sellsy"></i> 选择模板</a></li>
+						<li><a href="{:url('paySet')}"><i class="fa fa-exchange"></i> 在线支付设置</a></li>
+						{/if}
+						<li><a href="{:url('webSet')}"><i class="fa fa-edit"></i> 站点设置</a></li>
+						<li><a href="{:url('priceSet')}"><i class="fa fa-money"></i> 价格设置</a></li>
+						<li><a href="{:url('appSet')}"><i class="fa fa-cog"></i> APP设置</a></li>
+                    </ul>
+                </li>
+                <li class="{:checkIfActive('userlist,kmlist,kami,qqlist')} openable open">
+                    <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-list-ul fa-lg"></i>
+								</span>
+								<span class="text">
+									数据管理
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{:url('userList')}"><i class="fa fa-user"></i> 用户管理</a></li>
+						<li><a href="{:url('kmList')}"><i class="fa fa-caret-square-o-right"></i> 余额卡密管理</a></li>
+						<li><a href="{:url('kami')}"><i class="fa fa-share-alt"></i> 代挂卡密管理</a></li>
+						{if condition="ZID eq 1"}
+						<li><a href="{:url('qqList')}"><i class="fa fa-qq"></i> ＱＱ管理</a></li>
+						{/if}
+                    </ul>
+                </li>
+				<li class="{:checkIfActive('tixian')}">
+                    <a href="{:url('tixian')}">
+								<span class="menu-icon">
+									<i class="fa fa-money fa-lg"></i>
+								</span>
+								<span class="text">
+									余额提现
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+                {if condition="ZID eq 1 or config('web_super')"}
+                <li class="{:checkIfActive('ktfz')}">
+                    <a href="{:url('ktfz')}">
+								<span class="menu-icon">
+									<i class="fa fa-share-alt fa-lg"></i>
+								</span>
+								<span class="text">
+									开通分站
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+                {/if}
+                {if condition="ZID eq 1 or config('web_super')"}
+                <li class="{:checkIfActive('weblist')}">
+                    <a href="{:url('webList')}">
+								<span class="menu-icon">
+									<i class="fa fa-list-alt fa-lg"></i>
+								</span>
+								<span class="text">
+									分站列表
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+				{/if}
+				{if condition="ZID eq 1"}
+                <li class="{:checkIfActive('export')} openable open">
+                    <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-expand fa-lg"></i>
+								</span>
+								<span class="text">
+									数据导出
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                    <ul class="submenu">
+                        {volist name="webTools" id="webTool"}
+                        <li><a href="{:url('export',['tid'=>$webTool.tid])}"><i
+                                class="fa fa-star"></i>{$webTool.name}</a></li>
+                        {/volist}
+                    </ul>
+                </li>
+                <li class="{:checkIfActive('import')} openable open">
+                    <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-sign-in fa-lg"></i>
+								</span>
+								<span class="text">
+									数据导入
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{:url('import')}?kind=pwd"><i class="fa fa-star"></i>导入密码错误QQ</a></li>
+                        <li><a href="{:url('import')}?kind=bh"><i class="fa fa-star"></i>导入登录保护QQ</a></li>
+                        <li><a href="{:url('import')}?kind=dj"><i class="fa fa-star"></i>导入账号冻结QQ</a></li>
+                    </ul>
+                </li>
+                {/if}
+            </ul>
+
+            <div class="alert alert-info">
+                <i class="fa fa-clock-o fa-lg"></i> {:date("Y-m-d H:i:s")}
+            </div>
+        </div><!-- /main-menu -->
+    </div><!-- /sidebar-inner -->
+</aside>

@@ -1,0 +1,328 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li class="active">控制面板</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">控制面板</h3>
+        </div><!-- /page-title -->
+
+        <ul class="page-stats">
+            <li>
+                <div class="value">
+                    <span>总用户</span>
+                    <h4 id="currentVisitor">{$amount.zuser}</h4>
+                </div>
+                <span id="visits" class="sparkline"></span>
+            </li>
+            <li>
+                <div class="value">
+                    <span>总分站数</span>
+                    <h4><strong id="currentBalance">{$amount.zweb}</strong></h4>
+                </div>
+                <span id="balances" class="sparkline"></span>
+            </li>
+        </ul><!-- /page-stats -->
+    </div><!-- /main-header -->
+
+    <div class="grey-container shortcut-wrapper">
+        <a href="{:url('qqAdd')}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-plus"></i>
+					</span>
+            <span class="text">添加QQ</span>
+        </a>
+        <a href="{:url('order')}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-plus-circle"></i>
+					</span>
+            <span class="text">添加订单</span>
+        </a>
+        <a href="{:url('qqList')}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-tasks"></i>
+					</span>
+            <span class="text">QQ列表</span>
+        </a>
+        <a href="{:url('profile')}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-user"></i>
+					</span>
+            <span class="text">用户信息</span>
+        </a>
+        <a href="{:url('ktfz')}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-share-alt"></i>
+					</span>
+            <span class="text">开通分站</span>
+        </a>
+
+    </div><!-- /grey-container -->
+
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-danger">
+                    <h2 class="m-top-none" id="userCount">{$amount.user}</h2>
+                    <h5>站点总用户数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.juser}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-info">
+                    <h2 class="m-top-none"><span id="serverloadCount">{$amount.qq}</span></h2>
+                    <h5>站点总QQ数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jqq}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-hdd-o fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-warning">
+                    <h2 class="m-top-none" id="orderCount">{$amount.order}</h2>
+                    <h5><a href="{:url('rank',['kind'=>'order'])}" style="color:white">站点总订单数</a></h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jorder}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-cart fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-success">
+                    <h2 class="m-top-none" id="visitorCount">{$amount.web}</h2>
+                    <h5>分站数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jweb}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-bar-chart-o fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-danger">
+                    <div class="panel-body">
+                        {:config('web_gg_panel')}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-default panel-stat1 bg-success">
+                            <div class="panel-body">
+                                <div class="value">{$amount.zkm}</div>
+                                <div class="title">
+                                    <span class="m-left-xs">已发出卡密数</span>
+                                </div>
+                            </div>
+                        </div><!-- /panel -->
+                    </div><!-- /.col -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-default panel-stat2 bg-warning">
+                            <div class="panel-body">
+										<span class="stat-icon">
+											<i class="fa fa-user"></i>
+										</span>
+                                <div class="pull-right text-right">
+                                    <div class="value">{$amount.user}</div>
+                                    <div class="title">已注册用户</div>
+                                </div>
+                            </div>
+                        </div><!-- /panel -->
+                    </div><!-- /.col -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-default panel-stat2 bg-info">
+                            <div class="panel-body">
+										<span class="stat-icon">
+											<i class="fa fa-envelope"></i>
+										</span>
+                                <div class="pull-right text-right">
+                                    <div class="value">{$amount.order}</div>
+                                    <div class="title">拥有订单数</div>
+                                </div>
+                            </div>
+                        </div><!-- /panel -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        工作进展
+
+								<span class="badge badge-info pull-right">
+									4 left
+								</span>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>任务</th>
+                            <th>进步</th>
+                            <th></th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>代挂漏洞修补</td>
+                            <td>
+                                <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                                    <div class="progress-bar" style="width: 45%">
+                                        <span class="sr-only">45% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>45%</td>
+                            <td><span class="badge badge-info">2hr</span></td>
+                        </tr>
+                        <tr>
+                            <td>安卓版代挂开发</td>
+                            <td>
+                                <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                                    <div class="progress-bar progress-bar-success" style="width: 61%">
+                                        <span class="sr-only">61% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>61%</td>
+                            <td><span class="badge badge-info">1hr</span></td>
+                        </tr>
+                        <tr>
+                            <td>电脑版代挂开发</td>
+                            <td>
+                                <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                                    <div class="progress-bar progress-bar-danger" style="width: 97%">
+                                        <span class="sr-only">97% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>97%</td>
+                            <td><span class="badge badge-info">5m</span></td>
+                        </tr>
+                        <tr>
+                            <td>新的界面布局</td>
+                            <td>
+                                <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                                    <div class="progress-bar progress-bar-warning" style="width: 18%">
+                                        <span class="sr-only">18% Complete</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>18%</td>
+                            <td><span class="badge badge-info">12hr</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /panel -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+
+                            </div>
+                            </li>
+                            </ul><!-- /list-group -->
+                            <div class="loading-overlay">
+                                <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                            </div>
+                        </div><!-- /panel -->
+                    </div><!-- /.col -->
+                </div><!-- ./row -->
+            </div><!-- /.col -->
+            <div class="col-lg-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h1 class="text-center">
+                            <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160"
+                                 class="img-circle circle-border" alt="profile" style="width: 100px;">
+                        </h1>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseOne">
+                                            UID
+                                            <span class="badge badge-success pull-right">{$userInfo.uid}</span>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div><!-- panel -->
+							<div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseOne">
+                                            等级
+                                            <span class="badge badge-warning pull-right">{$power}</span>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div><!-- panel -->
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseOne">
+                                            余额
+                                            <span class="badge badge-warning pull-right">{$userInfo.point}元</span>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div><!-- panel -->
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseOne">
+                                            绑定QQ
+                                            <span class="badge badge-success pull-right">{$userInfo.qq}</span>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div><!-- panel -->
+
+                        </div><!-- panel-group -->
+                    </div>
+                </div><!-- /panel -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.padding-md -->
+</div><!-- /main-container -->
+{/block}

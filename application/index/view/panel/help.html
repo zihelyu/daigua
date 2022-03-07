@@ -1,0 +1,261 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+                <li class="active">帮助中心</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-body text-center p-lg text-danger">
+                    <h2>如果在这里找不到自己需要的内容，您可以联系站长咨询</h2>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion1"
+                             href="#collapseOne1">
+                            什么是代挂？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne1" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        代挂是帮助你QQ等级加速升级，每天帮你完成等级加速任务，服务器每天帮你挂机，免去自己手动的麻烦。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion2"
+                             href="#collapseOne2">
+                            代挂里面包含哪些加速任务？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne2" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        <p>
+                            <b>包含</b><br>
+                            手机QQ在线6小时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速1.0天<br>
+                            电脑QQ在线2小时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.5天<br>
+                            非隐身在线2小时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.2天<br>
+                            点亮QQ勋章墙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.2天<br>
+                            QQ音乐听歌半小时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.5天<br>
+                            QQ钱包签到&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.2天<br>
+                            电脑管家在线30分钟&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.2天<br>
+                            电脑管家使用安全功能(月限4次)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.5天<br>
+                            玩QQ手机游戏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加速0.2天<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion3"
+                             href="#collapseOne3">
+                            如何添加QQ进行代挂呢？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne3" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        在平台充值点数后点击添加代挂QQ按钮，在弹窗中输入QQ号、QQ密码和要代挂的天数即可代挂。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion4"
+                             href="#collapseOne4">
+                            代挂每天什么时候开始挂机？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne4" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        第一次添加的QQ会在当天晚上9点开始登陆代挂，以后每天晚上凌晨12点后开始代挂，在你早上醒来时所有加速任务均已完成！
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion5"
+                             href="#collapseOne5">
+                            补挂是干什么用的以及补挂的是时间是多少？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne5" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        补挂是当天凌晨代挂时由于帐号进入保护模式或密码错误导致代挂无法登陆完成加速任务的，可以点击补挂连接申请补挂，这样会在晚上9点时给你的QQ再代挂一次，补挂的时间也就是晚上9点！
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion6"
+                             href="#collapseOne6">
+                            QQ为什么会进入保护模式？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne6" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        这是你平时使用QQ的地区与我们的代挂服务器地区不一致，导致出现异地登陆，腾讯为了保护你的帐号，担心你是被盗号了，所以会出现这个提示，或者是被冻结进入保护模式，这个一般是在刚开始代挂前3-7天容易出现，之后就不会再有了。（建议你在QQ安全中心APP里的登陆记录中把异地登陆的“确认为本人登陆”，这样可以加快挂出常用地点和减少冻结的可能）
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion7"
+                             href="#collapseOne7">
+                            QQ进入保护模式了怎么办？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne7" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        登陆 <a href="https://aq.qq.com/007" target="_blank" rel="noreferrer">https://aq.qq.com/007</a>这个页面可以解除保护模式，解除后在本平台更新一次QQ密码就可以恢复代挂了。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion8"
+                             href="#collapseOne8">
+                            代挂的服务器地理位置在哪里？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne8" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        位置在“广东省 佛山市”，如果你也是在这个地方，那么你添加的代挂QQ不会异常哦。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion9"
+                             href="#collapseOne9">
+                            代挂加速任务每天能加速多少呢？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne9" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        非QQ会员每天固定加速3天，QQ会员用户根据会员加速倍数计算公式为：会员加速倍数×1.7+1.7
+                        ，例如SVIP8级加速是3.0倍的计算为3×1.7+1.7=6.8天。(以上计算不包含电脑管家月限4次使用安全功能任务的0.5天)
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion10"
+                             href="#collapseOne10">
+                            代挂错误日志中出现错误怎么办呢？
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne10" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        请查看本代挂帮助下方最底部，根据代挂错误日志上的原因查看对应的解决方法。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion11"
+                             href="#collapseOne11">
+                            错误日志【登陆密码错误】解决方法
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne11" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        密码错误的无法登陆，所有项目都不会加速，请在平台更新QQ密码后申请补挂即可，密码中尽量不要带特殊符号，符号大部分是分为全角和半角的，如果带有符号输入时需要注意区分，否则可能因为这个导致密码错误！
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion12"
+                             href="#collapseOne12">
+                            错误日志【QQ进入保护模式】解决方法
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne12" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        请在<a href="http://aq.qq.com/007" target="_blank" rel="noreferrer">http://aq.qq.com/007</a>解除冻结后在平台更新一次密码即可，没加速的可以点下补挂按钮，一般代挂在前两三天因为异地登陆导致的容易冻结，多挂几次，两三天后就不会了。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion13"
+                             href="#collapseOne13">
+                            错误日志【有登陆保护】【有设备锁】解决方法
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne13" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        请用户关闭设备锁、登陆保护这些即可，关闭地址：<a href="https://aq.qq.com/cn2/safe_service/device_lock" target="_blank" rel="noreferrer">https://aq.qq.com/cn2/safe_service/device_lock</a>，也可以在QQ安全中心APP中关闭，这些不关闭会导致勋章墙、电脑QQ在线、手机QQ在线这三项挂不上。
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <div class="accordion-toggle btn-block" data-toggle="collapse" data-parent="#accordion14"
+                             href="#collapseOne14">
+                            错误日志【未绑定银行卡】解决方法
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapseOne14" class="panel-collapse collapse" style="height: auto;">
+                    <div class="panel-body">
+                        请在QQ钱包中绑定一张银行卡，钱包签到这项加速官方要求是必须绑定银行卡的账户签到才有效，否则钱包签到加速这项不加速的。
+                    </div>
+                </div>
+            </div>
+            <div style="width:100%; height:20px; visibility:hidden;"></div>
+        </div>
+    </div>
+</div>
+{/block}

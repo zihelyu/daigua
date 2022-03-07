@@ -1,0 +1,134 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+            <li class="active">价格配置</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">价格配置</h3>
+        </div><!-- /page-title -->
+    </div>
+    <div class="padding-md">
+    <div class="row">
+        <div class="col-lg-12">
+	        <div class="panel panel-primary">
+	            <div class="panel-heading">
+	                价格设置
+	            </div>
+				<div class="list-group-item list-group-item-warning">
+	                全套代挂价格(成本{:config('zz_price_all')}元)，单个项目代挂价格(成本{:config('zz_price_dx')}元)
+	            </div>
+	            <div class="panel-body table-responsive">
+	                <table class="table table-striped ">
+	                    <thead>
+	                    <tr>
+	                        <th>售价(元)</th>
+	                        <th>普通用户</th>
+	                        <th>VIP1&nbsp;</th>
+							<th>VIP2&nbsp;</th>
+							<th>VIP3&nbsp;</th>
+							<th>VIP4&nbsp;</th>
+							<th>VIP5&nbsp;</th>
+	                        <th>操作</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr>
+	                        <form method="post">
+	                            <input type="hidden" name="action" value="set">
+	                            <input type="hidden" name="sp" value="all">
+	                            <td>全套代挂</td>
+	                            <td><input type="text" name="p0" value="{if condition=" $pall[0]"}{$pall[0]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p1" value="{if condition=" isset($pall[1])"}{$pall[1]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p2" value="{if condition=" isset($pall[2])"}{$pall[2]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p3" value="{if condition=" isset($pall[3])"}{$pall[3]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p4" value="{if condition=" isset($pall[4])"}{$pall[4]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p5" value="{if condition=" isset($pall[5])"}{$pall[5]}{else/}{:config('zz_price_all')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td>
+	                                <input type="submit" value="修改" class="btn btn-info">
+	                            </td>
+	                        </form>
+	                    </tr>
+	                    <tr>
+	                        <form method="post">
+	                            <input type="hidden" name="action" value="set">
+	                            <input type="hidden" name="sp" value="dx">
+	                            <td>单项代挂</td>
+	                            <td><input type="text" name="p0" value="{if condition=" isset($pdx[0])"}{$pdx[0]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p1" value="{if condition=" isset($pdx[1])"}{$pdx[1]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p2" value="{if condition=" isset($pdx[2])"}{$pdx[2]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p3" value="{if condition=" isset($pdx[3])"}{$pdx[3]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p4" value="{if condition=" isset($pdx[4])"}{$pdx[4]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p5" value="{if condition=" isset($pdx[5])"}{$pdx[5]}{else/}{:config('zz_price_dx')}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td>
+	                                <input type="submit" value="修改" class="btn btn-info">
+	                            </td>
+	                        </form>
+	                    </tr>
+						<tr>
+	                        <form method="post">
+	                            <input type="hidden" name="action" value="set">
+	                            <input type="hidden" name="sp" value="vip">
+	                            <td>VIP售价</td>
+	                            <td><input type="text" name="p0" value=""
+	                                class="form-control" disabled>
+	                            </td>
+	                            <td><input type="text" name="p1" value="{$pvip[0]}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p2" value="{if condition=" isset($pvip[1])"}{$pvip[1]}{else/}{$pvip[0]}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p3" value="{if condition=" isset($pvip[2])"}{$pvip[2]}{else/}{$pvip[0]}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p4" value="{if condition=" isset($pvip[3])"}{$pvip[3]}{else/}{$pvip[0]}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td><input type="text" name="p5" value="{if condition=" isset($pvip[4])"}{$pvip[4]}{else/}{$pvip[0]}{/if}"
+	                                class="form-control">
+	                            </td>
+	                            <td>
+	                                <input type="submit" value="修改" class="btn btn-info">
+	                            </td>
+	                        </form>
+	                    </tr>
+	                    </tbody>
+	                </table>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{/block}

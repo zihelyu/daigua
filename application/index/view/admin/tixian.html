@@ -1,0 +1,123 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+                <li class="active">余额提现</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+		{if condition="ZID neq 1"}
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                余额提现
+            </div>
+			<div class="list-group-item list-group-item-info">
+			{if condition="$userInfo.pay_account eq null"}
+			请先绑定收款支付宝账号！ <a href="{:url('panel/profile')}" class="btn btn-warning btn-sm">点此设置</a>
+			{else}
+			已绑定支付宝账号信息：账号：{$userInfo.pay_account} 姓名：{$userInfo.pay_name} <a href="{:url('panel/profile')}" class="btn btn-warning btn-sm">修改绑定</a>
+			{/if}
+			</div>
+            <div class="list-group-item list-group-item-warning">
+                单笔提现金额不能低于{:config('zz_tixian_min')}元。提现手续费{$tixian_fee}%。
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+                    <input type="hidden" name="action" value="tixian">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">账户余额</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" value="{$userInfo.point}元" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">提现金额</label>
+                        <div class="col-lg-8">
+                            <input type="number" name="money" class="form-control" placeholder="输入要提现金额">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-8">
+                            <button class="btn btn-primary" type="submit">确认提现</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+		{/if}
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                提现记录{if condition="ZID eq 1"}--<a href="{:url('txxz')}" class="btn-xs btn-warning">导出待处理记录</a>{/if}
+            </div>
+			{if condition="ZID eq 1"}
+			<div class="panel-body">
+                <form method="get">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的支付宝账号或者姓名！" name="value"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+			{/if}
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>UID</th>
+                            <th>金额</th>
+							<th>实际到账</th>
+							<th>提现账号</th>
+							<th>姓名</th>
+                            <th>申请时间</th>
+                            <th>完成时间</th>
+                            <th>状态</th>
+                            {if condition="ZID eq 1"}<th>操作</th>{/if}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$List" id="row"}
+                        <tr>
+                            <td><b>{$row.id}</b></td>
+                            <td>{$row.uid}</td>
+                            <td>{$row.money}元</td>
+							<td>{$row.realmoney}元</td>
+							<td>{$row.pay_account}</td>
+							<td>{$row.pay_name}</td>
+                            <td>{$row.addtime}</td>
+                            <td>{$row.endtime}</td>
+							<td>{if condition="$row.status eq 1"}<font color="green">已完成</font>{else}<font color="blue">未完成</font>{/if}</td>
+							{if condition="ZID eq 1"}
+                            <td>
+                                {if condition="$row.status eq 0"}<a href="?action=complete&id={$row.id}" class="btn-xs btn-success">完成</a>{else}<a href="?action=reset&id={$row.id}" class="btn-xs btn-info">撤销</a>{/if}
+								<a href="?action=del&id={$row.id}" class="btn-xs btn-danger" onclick="return confirm('确认删除？');">删除</a>
+                            </td>
+							{/if}
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="15">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,118 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+            <li class="active">QQ升级计算器</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="widget-body">
+                <form method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><i class="text-danger">*</i> Q Q号码:</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="uin" placeholder="输入QQ号码" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><i class="text-danger">*</i> 在线天数:</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="day" placeholder="当前活跃天数" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><i class="text-danger">*</i> 升级速度:</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="sd" placeholder="每天获得活跃天数" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><i class="text-danger">*</i> 升到等级:</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="level" placeholder="输入希望升到的等级" class="form-control" value="17"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <button class="btn btn-success" type="button" onclick="js();"><i class="fa fa-qq"></i> Q Q
+                                升级计算
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- .widget-body -->
+            <div class="widget-footer">
+                <div class="list-group-item list-group-item-info">
+                    QQ等级计算公式:第N级所需累积的活跃天数 = N*N+4*N
+                </div>
+                <div style="display: none;" id="result">
+                    <div class="list-group-item list-group-item-success">
+                        <B>你现在的QQ等级：</B><i class="fa fa-qq"></i> QQ:<span style="font-size: 25px;color: #bd2828;"
+                                                                          class="uin"></span>现在的QQ等级是:<span
+                            style="font-size: 25px;color: #bd2828;" id="level_now"></span>级,在线天数<span
+                            style="font-size: 25px;color: #bd2828;" id="day_now"></span>天
+                    </div>
+                    <div class="list-group-item list-group-item-warning">
+                        <B>你未来的QQ等级：</B><i class="fa fa-qq"></i> QQ:<span style="font-size: 25px;color: #175d0f;"
+                                                                          class="uin"></span>升级的QQ等级是:<span
+                            style="font-size: 25px;color: #175d0f;" id="level_xx"></span>级,升级所需357,加速后所需在线天数<span
+                            style="font-size: 25px;color: #175d0f;" id="day_need"></span>天
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function js() {
+        $("#result").hide();
+        var data = {
+            uin: $("input[name='uin']").val(),
+            day: $("input[name='day']").val(),
+            sd: $("input[name='sd']").val(),
+            level: $("input[name='level']").val()
+        }
+        var qq = /^[1-9]{1}\d{4,9}$/;
+        if (!qq.test(data.uin)) {
+            alert("请输入正确的QQ号码");
+            return;
+        }
+        var reg = /^[0-9]{1}\d*(\.\d{1,2})?$/;
+        if (!reg.test(data.day)) {
+            alert("请输入正确的活跃天数");
+            return;
+        }
+        if (!reg.test(data.sd)) {
+            alert("请输入正确的升级速度");
+            return;
+        }
+        if (data.level == "" || data.level < 1) {
+            alert("请输入正确的QQ等级");
+            return;
+        }
+
+        $.post("#", data, function (json) {
+            if (json.code == 0) {
+                $(".uin").text(json.uin);
+                $("#day_now").text(json.day);
+                $("#day_need").text(json.need);
+                $("#level_now").text(json.level_now);
+                $("#level_xx").text(json.level);
+                $("#result").show();
+            }
+        }, "json");
+    }
+
+</script>
+{/block}

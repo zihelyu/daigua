@@ -1,0 +1,52 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+            <li class="active">数据导出</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">数据导出</h3>
+        </div><!-- /page-title -->
+    </div>
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        {$tool.name}-数据导出
+                    </div>
+                    <div class="panel-body text-center">
+                        <div class="spacer spacer-bottom">
+                            <h2 class="text-warning">
+                                目前总共有&nbsp;
+                                <font color=green>{$amount.all}</font>
+                                &nbsp;条订单，可导出&nbsp;
+                                <font color=green>{$amount.can}</font>
+                                &nbsp;条，其中有&nbsp;
+                                <font color=red>{$amount.bu}</font>
+                                &nbsp;条需要补挂！
+                            </h2>
+                            <br>
+                            <a href="{:url('xz',['tid'=>$tool.tid])}?type=all" target="_blank" type="button"
+                               class="btn btn-space btn-warning btn-rounded"
+                               onClick="return confirm('确认导出全部{$tool.name}订单')">
+                                导出全部订单
+                            </a>
+                            <a href="{:url('xz',['tid'=>$tool.tid])}" target="_blank" type="button"
+                               class="btn btn-space btn-info btn-rounded"
+                               onClick="return confirm('确认导出补挂{$tool.name}数据？')">
+                                导出补挂订单
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

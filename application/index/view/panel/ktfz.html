@@ -1,0 +1,163 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+                <li class="active">开通分站</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-danger text-center">
+            开通分站前，请仔细阅读分站开通说明，谢谢！
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="alert alert-warning">
+            <h3>分站是什么？有什么用处？</h3>
+            <small>分站是一个独立的站点，可以自由修改页面各个内容和VIP等服务的售价，将用户留在自己的手里，有整个网站的控制权利，打造属于自己的代挂网。二级主站可以免费无限搭建分站！</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-info">
+            <h3>搭建分站需要什么条件？</h3>
+            <small>代挂的分站系统和服务器均由我们来提供，并且免费赠送一个二级域名给你使用，如果你有自己的顶级域名也可以在后台绑定。</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-success">
+            <h3>分站搭建好后做些什么？</h3>
+            <small>分站用户提交的QQ会同步到我们的主系统中，由我们来执行最终的代挂登陆任务，你只需要发展你的用户，专心卖代挂和做好售后服务就可以了，其它事情无需操心。</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-danger">
+            <h3>分站拿货的成本价格是多少？</h3>
+            <small>我们有着先进的代挂技术，采用固定IP服务器上代挂，稳定的同时也极大的降低了代挂成本，一个QQ一个月的拿货价全套代挂仅为<b>{:config('zz_price_all')}</b>元，单项代挂仅为<b>{:config('zz_price_dx')}</b>元，你有着非常高的利润空间。</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-warning">
+            <h3>分站支持哪些功能？</h3>
+            <small>分站与主站没有任何区别，完全相同的功能与界面，你的用户看不出来你这是分站，并且我们的代挂支持邮件提醒服务，用户代挂的QQ出现异常时不需要你提醒用户的。</small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-info">
+            <h3>我们的分站有哪些优势？</h3>
+            <small>分站拥有全网络独家的搭建下级分站功能，并且你的下级分站消费你都有10%的提成，这个提成可以直接给你拿货使用，减少你分站的成本投入，而且还自带推广功能，吸引你的用户帮你宣传。
+            </small>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-success">
+            分站系统新上线，首开限时优惠中，仅需{:config('web_price_ktfz')}元即可开通，账户余额不足的可
+            <a href="{:url('recharge')}" class="btn-xs btn-warning">点此充值</a>！
+        </div>
+        <div class="alert alert-info">点击下方按钮系统全自动为你开通分站，无需手工搭建，更不需要建站技术即可拥有自己的平台。</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary table-responsive">
+            <div class="panel-heading">
+                自助开通
+                <span class="label label-danger pull-right">余额:{$userInfo.point}元</span>
+            </div>
+            <div class="panel-body">
+
+                <form method="post" class="alert alert-info" onsubmit="return checkinput()">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                分站类型
+                            </div>
+                            <select name="type" class="form-control">
+                                <option value="0">普通分站({:config('web_price_ktfz')}元)</option>
+                                <option value="1">二级主站({:config('zz_price_ktfz_super')}元)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                二级域名
+                            </div>
+                            <input type="text" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" name="qz"
+                                   class="form-control" required data-parsley-length="[2,8]"
+                                   placeholder="输入你想要的二级前缀">
+                            <div class="input-group-addon"><select name="domain">
+                                {volist name="domains" id="domain"}
+                                <option value="{:trim($domain)}">{:trim($domain)}</option>
+                                {/volist}
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                网站名称
+                            </div>
+                            <input type="text" name="name" class="form-control" required
+                                   data-parsley-length="[2,10]"
+                                   placeholder="输入网站名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                你的QQ号
+                            </div>
+                            <input type="number" name="qq" class="form-control" required
+                                   data-parsley-length="[5,10]"
+                                   placeholder="输入QQ号" value="{$userInfo.qq}">
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" value="点此立即拥有分站" class="btn btn-danger btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("input[name='qz']").blur(function(){
+        var qz = $(this).val();
+        var domain = $("select[name='domain']").val();
+        if(qz){
+            $.get("?action=check", { 'qz' : qz , 'domain' : domain},function(data){
+                    if( data == 1 ){
+                        alert('你所填写的域名已被使用，请更换一个！');
+						$("input[name='qz']").focus();
+                    }
+            });
+        }
+    });
+	function checkinput(){
+		var qz = $("input[name='qz']").val();
+		var name = $("input[name='name']").val();
+		var qq = $("input[name='qq']").val();
+		if(qz.length<2){
+			alert('域名前缀太短！');
+			return false;
+		}else if(qz.length>10){
+			alert('域名前缀太长！');
+			return false;
+		}else if(name.length<2){
+			alert('网站名称太短！');
+			return false;
+		}else if(qq.length<5){
+			alert('QQ格式不正确！');
+			return false;
+		}
+		return true;
+	}
+</script>
+{/block}

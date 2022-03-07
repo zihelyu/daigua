@@ -1,0 +1,118 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+                <li class="active">{$info.uin}-订单列表</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary table-responsive">
+            <div class="panel-heading">
+                {$info.uin}-订单列表
+				<span class="pull-right">
+					<label class="label-checkbox inline">
+						<a href="{:url('order')}?qid={$info.qid}" class="btn-xs btn-warning">自助下单</a>
+					</label>
+				</span>
+            </div>
+            <div class="panel-body text-center">
+                <img src="//q4.qlogo.cn/headimg_dl?dst_uin={$info.uin}&amp;spec=100"
+                     class="img-circle circle-border m-b-md">
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table table-bordered">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-center"> QQ状态</td>
+                            <td class="text-center">{:getQqZt($info.zt)}</td>
+                            <td class="text-center"><a href="{:url('qqAdd')}?qid={$info.qid}"
+                                                       class="btn-xs btn-warning">更新密码</a>
+                            </td>
+                        </tr>
+						{if condition="config('zz_addqq_mode') neq 1"}
+                        <tr>
+                            <td class="text-center"> COOKIE状态</td>
+                            <td class="text-center">{if condition="$info.cookiezt"}<font
+                                    color="red">需更新</font>{else}<font
+                                    color="green">正常</font>{/if}
+                            </td>
+                            <td class="text-center"><a href="{:url('qqAdd')}?qid={$info.qid}"
+                                                       class="btn-xs btn-warning">更新COOKIE</a></td>
+                        </tr>
+						{/if}
+						{if condition="config('zz_quan_api')"}
+						<tr>
+                            <td class="text-center"> 其它功能</td>
+                            <td class="text-center" colspan="2"><a href="?action=quan" class="btn-xs btn-success">一键拉圈圈99+</a></td>
+                        </tr>
+						{/if}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">代挂项目</th>
+                            <th class="text-center">到期时间</th>
+                            <th class="text-center">状态</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$orderList" id="order"}
+                        <tr>
+                            <td class="text-center">{$order.name}</td>
+                            <td class="text-center">{$order.endtime}</td>
+                            <td class="text-center">
+                                {if condition="$order.zt eq 0"}
+                                <font color="green">加速中</font>
+                                {elseif condition="$order.zt eq 1"}
+                                <font color="#d2691e">补挂中</font>
+                                {elseif condition="$order.zt eq 2"}
+                                <font color="#red">已关闭</font>
+                                {else}
+                                <font color="#red">未知</font>
+                                {/if}
+                            </td>
+                            <td class="text-center">
+
+                                {if condition="$order.zt eq 1"}
+                                <a href="?action=qxbu&tid={$order.tid}" class="btn-xs btn-warning">取消补挂</a>
+                                {else}
+                                <a href="?action=bu&tid={$order.tid}" class="btn-xs btn-info">申请补挂</a>
+                                {/if}
+                                {if condition="$order.zt eq 2"}
+                                <a href="?action=on&tid={$order.tid}" class="btn-xs btn-success">开启</a>
+                                {else}
+                                <a href="?action=off&tid={$order.tid}" class="btn-xs btn-danger">关闭</a>
+                                {/if}
+
+                            </td>
+
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+

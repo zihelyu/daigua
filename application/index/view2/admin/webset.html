@@ -1,0 +1,169 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+            <li class="active">站点配置</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">站点配置</h3>
+        </div><!-- /page-title -->
+    </div>
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        站点配置
+                    </div>
+                    <div class="panel-body">
+
+                        <form method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ZID</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" value="{$web.zid}" disabled>
+                                </div>
+                            </div>
+							<div class="form-group">
+		                        <label class="col-lg-3 control-label">站点类型</label>
+		                        <div class="col-lg-8">
+									<select name="super" class="form-control" {if condition="$zid eq 0"}disabled{/if}>
+									<option value="0" {if condition="$web.super eq 0"}selected{/if}>普通分站</option>
+									<option value="1" {if condition="$web.super eq 1"}selected{/if}>主站</option>
+									{if condition="ZID eq 1 || $web.super eq 2"}<option value="2" {if condition="$web.super eq 2"}selected{/if}>超级主站</option>{/if}
+									</select>
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="col-lg-3 control-label">网站域名</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="domain" class="form-control" value="{$web.domain}" {if condition="ZID neq 1"}disabled{/if}>
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="col-lg-3 control-label">额外域名</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="domain2" class="form-control" value="{$web.domain2}">
+									<pre>请将域名cname解析到{$_SERVER['HTTP_HOST']}，域名必须要备案</pre>
+		                        </div>
+		                    </div>
+							{if condition="ZID eq 1 || $zid neq 0"}
+		                    <div class="form-group">
+		                        <label class="col-lg-3 control-label">站点到期</label>
+		                        <div class="col-lg-8">
+		                            <input type="datetime" name="endtime" class="form-control" value="{$web.endtime}">
+		                        </div>
+		                    </div>
+		                    {/if}
+							<!--div class="form-group">
+								<label class="col-lg-3 control-label">全套代挂价格(成本{:config('zz_price_all')}元)</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_all" class="form-control"
+										   value="{$web.price_all}">
+									<div class="alert alert-info">分别对应普通会员与VIP1～5等级，用|分隔，例如3|2|1.8|1.5|1|0.8
+		                            </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">单个项目代挂价格(成本{:config('zz_price_dx')}元)</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_dx" class="form-control"
+										   value="{$web.price_dx}">
+									<div class="alert alert-info">分别对应普通会员与VIP1～5等级，用|分隔，例如0.8|0.6|0.5|0.4|0.3|0.1
+		                            </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">VIP会员开通价格</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_vip" class="form-control"
+										   value="{$web.price_vip}">
+									<div class="alert alert-info">分别对应VIP1～5等级，用|分隔，例如3|5|10|15|22
+		                            </div>
+								</div>
+							</div-->
+							{if condition="$web.super neq 0 || ZID eq 1"}
+							<div class="form-group">
+								<label class="col-lg-3 control-label">开通分站价格</label>
+								<div class="col-lg-8">
+									<input type="number" name="price_ktfz" class="form-control"
+										   value="{$web.price_ktfz}">
+								</div>
+							</div>
+							{/if}
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">站长QQ</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="qq" class="form-control" value="{$web.qq}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">站点名称</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="name" class="form-control" value="{$web.name}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">SEO标题</label>
+                                <div class="col-lg-8">
+                                <textarea name="title" rows="5"
+                                          class="form-control">{:getHtmlCode($web.title,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">SEO关键词</label>
+                                <div class="col-lg-8">
+                                    <textarea name="keywords" rows="5" class="form-control">{:getHtmlCode($web.keywords,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">SEO标题</label>
+                                <div class="col-lg-8">
+                                    <textarea name="description" rows="5" class="form-control">{:getHtmlCode($web.description,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">用户面板页公告</label>
+                                <div class="col-lg-8">
+                                    <textarea name="gg_panel" rows="5" class="form-control">{:getHtmlCode($web.gg_panel,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">QQ添加页公告</label>
+                                <div class="col-lg-8">
+                                    <textarea name="gg_qqadd" rows="5" class="form-control">{:getHtmlCode($web.gg_qqadd,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">代挂下单页公告</label>
+                                <div class="col-lg-8">
+                                    <textarea name="gg_dgadd" rows="5" class="form-control">{:getHtmlCode($web.gg_dgadd,true)}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">邀请列表页公告</label>
+                                <div class="col-lg-8">
+                                    <textarea name="gg_invite" rows="5" class="form-control">{:getHtmlCode($web.gg_invite,true)}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-8">
+                                    <button class="btn btn-primary" type="submit">保存配置</button>
+                                    <button class="btn btn-default-outline" type="reset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+						<div class="alert alert-info">提示：所有价格单位均为RMB/元，可精确到小数点后两位；所有比例均为不大于100的正整数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

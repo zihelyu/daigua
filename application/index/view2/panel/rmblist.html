@@ -1,0 +1,56 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+            <li class="active">收支明细</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">收支明细</h3>
+        </div><!-- /page-title -->
+    </div>
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-warning table-responsive">
+                    <div class="panel-heading">
+                        收支明细
+                        <span class="label label-danger pull-right">余额:{$userInfo.point}元</span>
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                            <thead>
+                            <tr>
+                                <th class="text-center">记录ID</th>
+                                <th class="text-center">类型</th>
+                                <th class="text-center">金额</th>
+                                <th class="text-center">详情</th>
+                                <th class="text-center">时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="$points" id="point"}
+                            <tr>
+                                <td class="text-center">{$point.id}</td>
+                                <td class="text-center">{$point.action}</td>
+                                <td class="text-center">{$point.point}</td>
+                                <td>{$point.bz}</td>
+                                <td class="text-center">{$point.addtime}</td>
+                            </tr>
+                            {/volist}
+                            <tr class="text-center">
+                                <td colspan="10">{$pageList->showPage()}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

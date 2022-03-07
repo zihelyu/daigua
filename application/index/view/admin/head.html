@@ -1,0 +1,121 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/" class="logo"><i class="md md-terrain"></i> <span> {:config('web_name')} </span></a>
+            </div>
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <ul class="nav navbar-nav navbar-right pull-right">
+
+                    <li class="dropdown user-box">
+                        <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown"
+                           aria-expanded="true">
+                            <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160" alt="user-img"
+                                 class="img-circle user-img">
+                            <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="{:url('index/Panel/index')}"><i class="fa fa-users"></i> 用户面板</a></li>
+                            <li><a href="{:url('index/Index/logout')}" onclick="return confirm('确认退出登录？');"><i
+                                    class="md md-exit-to-app"></i> 安全退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="{:checkIfActive('index')}">
+                        <a href="{:url('index')}"><i class="md md-home"></i> <span>管理后台</span> </a>
+                    </li>
+
+                    <li class="{:checkIfActive('mainset,emailset,selectmb,payset,webset,priceset,appset')} has-submenu">
+                        <a href="#"><i class="fa fa-edit"></i> <span>站点配置</span> </a>
+                        <ul class="submenu">
+                            {if condition="ZID eq 1"}
+                            <li><a href="{:url('mainSet')}"><i class="fa fa-home"></i> 主站配置</a></li>
+                            <li><a href="{:url('emailSet')}"><i class="fa fa-envelope"></i> 邮箱配置</a></li>
+                            <!--li><a href="{:url('setDhbl')}"><i class="fa fa-exchange"></i> 元宝兑换比例</a></li-->
+                            <li><a href="{:url('selectMb')}"><i class="fa fa-sellsy"></i> 选择模板</a></li>
+							<li><a href="{:url('paySet')}"><i class="fa fa-exchange"></i> 在线支付设置</a></li>
+                            {/if}
+                            <li><a href="{:url('webSet')}"><i class="fa fa-edit"></i> 站点设置</a></li>
+							<li><a href="{:url('priceSet')}"><i class="fa fa-money"></i> 价格设置</a></li>
+							<li><a href="{:url('appSet')}"><i class="fa fa-cog"></i> APP设置</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{:checkIfActive('userlist,kmlist,kami,qqlist')} has-submenu">
+                        <a href="#"><i class="fa fa-list-ul"></i> <span>数据管理</span> </a>
+                        <ul class="submenu">
+                            <li><a href="{:url('userList')}"><i class="fa fa-user"></i> 用户管理</a></li>
+                            <li><a href="{:url('kmList')}"><i class="fa fa-caret-square-o-right"></i> 余额卡密管理</a></li>
+							<li><a href="{:url('kami')}"><i class="md md-list"></i> 代挂卡密管理</a></li>
+							{if condition="ZID eq 1"}
+							<li><a href="{:url('qqList')}"><i class="fa fa-qq"></i> ＱＱ管理</a></li>
+							{/if}
+                        </ul>
+                    </li>
+
+					<li class="{:checkIfActive('tixian')} has-submenu">
+                        <a href="{:url('tixian')}"><i class="fa fa-money "></i><span>余额提现</span> </a>
+                    </li>
+
+                    {if condition="ZID eq 1 or config('web_super')"}
+                    <li class="{:checkIfActive('ktfz')} has-submenu">
+                        <a href="{:url('ktfz')}"><i class="fa fa-share-alt "></i><span>开通分站</span> </a>
+                    </li>
+                    {/if}
+					{if condition="ZID eq 1 or config('web_super')"}
+                    <li class="{:checkIfActive('weblist')} has-submenu">
+                        <a href="{:url('webList')}"><i class="fa fa-list-alt"></i><span>分站列表</span> </a>
+                    </li>
+					{/if}
+					{if condition="ZID eq 1"}
+                    <li class="{:checkIfActive('export')} has-submenu">
+                        <a href="#"><i class="fa fa-expand"></i> <span>数据导出</span> </a>
+                        <ul class="submenu">
+                            {volist name="webTools" id="webTool"}
+                            <li><a href="{:url('export',['tid'=>$webTool.tid])}"><i
+                                    class="fa fa-star"></i> {$webTool.name}</a></li>
+                            {/volist}
+                        </ul>
+                    </li>
+                    <li class="{:checkIfActive('import')} has-submenu">
+                        <a href="#"><i class="fa fa-sign-in"></i> <span>数据导入</span> </a>
+                        <ul class="submenu">
+                            <li><a href="{:url('import')}?kind=pwd"><i class="fa fa-star"></i> 导入密码错误QQ</a></li>
+                            <li><a href="{:url('import')}?kind=bh"><i class="fa fa-star"></i> 导入登录保护QQ</a></li>
+                            <li><a href="{:url('import')}?kind=dj"><i class="fa fa-star"></i> 导入账号冻结QQ</a></li>
+                        </ul>
+                    </li>
+                    {/if}
+
+                </ul>
+                <!-- End navigation menu  -->
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End Navigation Bar-->

@@ -1,0 +1,118 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li class="active">管理后台</li>
+        </ul>
+    </div><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">管理后台</h3>
+        </div><!-- /page-title -->
+
+        <ul class="page-stats">
+            <li>
+                <div class="value">
+                    <span>总用户</span>
+                    <h4 id="currentVisitor">{$amount.zuser}</h4>
+                </div>
+                <span id="visits" class="sparkline"></span>
+            </li>
+            <li>
+                <div class="value">
+                    <span>总订单数</span>
+                    <h4><strong id="currentBalance">{$amount.zorder}</strong></h4>
+                </div>
+                <span id="balances" class="sparkline"></span>
+            </li>
+            <li>
+                <div class="value">
+                    <span>总分站数</span>
+                    <h4><strong id="currentBalance2">{$amount.zweb}</strong></h4>
+                </div>
+                <span id="balances2" class="sparkline"></span>
+            </li>
+        </ul><!-- /page-stats -->
+    </div><!-- /main-header -->
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-danger">
+                    <h2 class="m-top-none" id="userCount">{$amount.user}</h2>
+                    <h5>站点总用户数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.juser}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-info">
+                    <h2 class="m-top-none"><span id="serverloadCount">{$amount.qq}</span></h2>
+                    <h5>站点总QQ数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jqq}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-hdd-o fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-warning">
+                    <h2 class="m-top-none" id="orderCount">{$amount.order}</h2>
+                    <h5>站点总订单数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jorder}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-cart fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6 col-md-3">
+                <div class="panel-stat3 bg-success">
+                    <h2 class="m-top-none" id="visitorCount">{$amount.web}</h2>
+                    <h5>旗下分站数</h5>
+                    <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs">今日新增加 {$amount.jweb}</span>
+                    <div class="stat-icon">
+                        <i class="fa fa-bar-chart-o fa-3x"></i>
+                    </div>
+                    <div class="refresh-button">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="loading-overlay">
+                        <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                    </div>
+                </div>
+            </div><!-- /.col -->
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-danger">
+                    <div class="panel-body">
+                        {:config('zz_gg_admin')}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

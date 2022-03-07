@@ -1,0 +1,111 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+                <li class="active">邮箱配置</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                邮箱配置
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+					<div class="form-group">
+                        <label class="col-lg-3 control-label">发信模式</label>
+                        <div class="col-lg-8">
+                            <select class="form-control" name="email_cloud" default="{:config('zz_email_cloud')}"><option value="0">普通模式</option><option value="1">搜狐Sendcloud</option></select>
+                        </div>
+                    </div>
+					<div id="frame_set1" style="{if condition="config('zz_email_cloud') eq 1"}display:none;{/if}">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">SMTP服务器</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_host" class="form-control"
+                                   value="{:config('zz_email_host')}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">端口</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_port" class="form-control"
+                                   value="{:config('zz_email_port')}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">邮箱账号</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_user" class="form-control"
+                                   value="{:config('zz_email_user')}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">密码</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_pwd" class="form-control"
+                                   value="{:config('zz_email_pwd')}">
+                        </div>
+                    </div>
+					</div>
+					<div id="frame_set2" style="{if condition="config('zz_email_cloud') neq 1"}display:none;{/if}">
+					<div class="form-group">
+                        <label class="col-lg-3 control-label">API_USER</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_apiuser" class="form-control"
+                                   value="{:config('zz_email_apiuser')}">
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-lg-3 control-label">API_KEY</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_apikey" class="form-control"
+                                   value="{:config('zz_email_apikey')}">
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-lg-3 control-label">邮箱账号</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email_user2" class="form-control"
+                                   value="{:config('zz_email_user')}">
+							<pre><font color="green">SendCloud申请地址&nbsp;<a href="http://sendcloud.sohu.com/" target="_blank">点击进入</a></font></pre>
+                        </div>
+                    </div>
+					</div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-8">
+                            <button class="btn btn-primary" type="submit">保存配置</button>
+                            <button class="btn btn-default-outline" type="reset">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$("select[name='email_cloud']").change(function(){
+	if($(this).val() == 0){
+		$("#frame_set1").css("display","inherit");
+		$("#frame_set2").css("display","none");
+	}else{
+		$("#frame_set1").css("display","none");
+		$("#frame_set2").css("display","inherit");
+	}
+});
+</script>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default")||0);
+}
+</script>
+{/block}

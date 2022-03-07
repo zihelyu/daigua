@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{$webTitle}-{:config('web_name')}</title>
+	<meta name="description" content="{:config('web_description')}">
+	<meta name="keywords" content="{:config('web_keywords')}">
+    <link href="/assets/style1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/core.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/components.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/pages.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="/assets/style1/css/responsive.css" rel="stylesheet" type="text/css">
+	<link href="/assets/style1/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <script src="/assets/style1/js/modernizr.min.js"></script>
+	<script src="/assets/style1/js/jquery.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+{block name="head"}{/block}
+<div class="wrapper">
+    <div class="container">
+        {block name="main"}{/block}
+        
+        <!-- Footer -->
+        <footer class="footer text-right">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        2017 © {:config('web_name')}
+                    </div>
+                    <div class="col-xs-6">
+                        <ul class="pull-right list-inline m-b-0">
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </div>
+    <!-- end container -->
+</div>
+
+
+
+<!-- jQuery  -->
+<script src="/assets/style1/js/bootstrap.min.js"></script>
+<script src="/assets/style1/js/detect.js"></script>
+<script src="/assets/style1/js/fastclick.js"></script>
+<script src="/assets/style1/js/jquery.blockUI.js"></script>
+<script src="/assets/style1/js/waves.js"></script>
+<script src="/assets/style1/js/wow.min.js"></script>
+<script src="/assets/style1/js/jquery.nicescroll.js"></script>
+<script src="/assets/style1/js/jquery.scrollTo.min.js"></script>
+
+<!-- App js -->
+<script src="/assets/style1/js/jquery.app.js"></script>
+
+<!-- moment js  -->
+<script src="/assets/style1/plugins/moment/moment.js"></script>
+
+<!-- counters  -->
+<script src="/assets/style1/plugins/waypoints/lib/jquery.waypoints.js"></script>
+<script src="/assets/style1/plugins/counterup/jquery.counterup.min.js"></script>
+
+<!-- sweet alert  -->
+<script src="/assets/style1/plugins/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<!-- flot Chart -->
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.time.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.resize.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.pie.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.selection.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.stack.js"></script>
+<script src="/assets/style1/plugins/flot-chart/jquery.flot.crosshair.js"></script>
+
+<!-- todos app  -->
+<script src="/assets/style1/pages/jquery.todo.js"></script>
+
+<!-- chat app  -->
+<script src="/assets/style1/pages/jquery.chat.js"></script>
+
+<!-- dashboard  -->
+<script src="/assets/style1/pages/jquery.dashboard.js"></script>
+{block name="footJs"}{/block}
+{if condition="isset($alert)"}
+<script type="text/javascript">{$alert}</script>
+{/if}
+</body>
+</html>

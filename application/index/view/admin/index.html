@@ -1,0 +1,84 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li class="active">管理后台</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bx-shadow bg-info">
+            <span class="mini-stat-icon"><i class="fa fa-users"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.user}</span>
+                总用户数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日增加<span class="pull-right">{$amount.juser}</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-purple bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-qq"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.qq}</span>
+                站点总QQ数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jqq}</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-primary bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-arrow-circle-o-up"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.order}</span>
+                站点总订单数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jorder}</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-success bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-share-alt"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.web}</span>
+                分站数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jweb}</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-danger">
+            <div class="panel-body">
+			{:config('zz_gg_admin')}
+			</div>
+        </div>
+    </div>
+</div>
+{/block}

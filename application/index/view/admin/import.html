@@ -1,0 +1,50 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 管理后台</a></li>
+                <li class="active">导入{$title}QQ</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading text-center">
+                <h5>导入{$title}QQ</h5>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="import">
+                    <div class="list-group-item">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                QQ列表文件
+                            </div>
+                            <input type="file" name="qqfile" class="form-control">
+                            <input value="你可以上传QQ列表文件，或者直接输入QQ列表" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                QQ列表
+                            </div>
+                                    <textarea id="textarea-input" name="qqs" rows="10" class="form-control"
+                                              placeholder="一行一个QQ"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item">
+                        <input type="submit" name="submit" value="确认导入" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

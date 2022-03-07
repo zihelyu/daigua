@@ -1,0 +1,77 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div id="main-container">
+    <div id="breadcrumb">
+        <ul class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+            <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+            <li class="active">每日签到</li>
+        </ul>
+    </div>
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">每日签到</h3>
+        </div>
+    </div>
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        签到规则
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group-item list-group-item-success text-center">每日前{$num}名签到的人至少可以获得{$rule[1]}元奖励！</div>
+                        <div class="list-group-item list-group-item-info">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: {$day * 10}%;"></div>
+                            </div>
+                            <div class="text-center">我已连续签到 <strong>{$day}</strong>天！</div>
+                        </div>
+                        <div class="list-group-item list-group-item-warning">
+                            <form class="form-horizontal" method="post">
+                                <div class="list-group-item">
+                                    {if condition="$isQd"}
+                                    <span class="btn btn-warning btn-block">今天已签到</span>
+                                    {else}
+                                    <button class="btn btn-primary btn-block">签到</button>
+                                    {/if}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-warning table-responsive">
+                    <div class="panel-heading">
+                        签到记录
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                            <thead>
+                            <tr>
+                                <th class="text-center">UID</th>
+                                <th class="text-center">用户名</th>
+                                <th class="text-center">连续天数</th>
+                                <th class="text-center">签到时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="$qdList" id="qd"}
+                            <tr>
+                                <td class="text-center">{$qd.uid}</td>
+                                <td class="text-center">{$qd.user}</td>
+                                <td class="text-center">{$qd.num}</td>
+                                <td class="text-center">{$qd.qdtime}</td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

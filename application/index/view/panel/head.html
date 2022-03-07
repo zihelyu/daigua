@@ -1,0 +1,170 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/" class="logo"><i class="md md-terrain"></i> <span> {:config('web_name')} </span></a>
+            </div>
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li class="dropdown hidden-xs">
+                        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
+                           data-toggle="dropdown" aria-expanded="true">
+                            <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">3</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg">
+                            <li class="text-center notifi-title">消息推送</li>
+                            <li class="list-group">
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <em class="fa fa-user-plus fa-2x text-info"></em>
+                                        </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">您好,先生</div>
+                                            <p class="m-0">
+                                                <small>尊敬的用户欢迎您使用本系统</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <em class="fa fa-diamond fa-2x text-primary"></em>
+                                        </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">提醒</div>
+                                            <p class="m-0">
+                                                <small>为了您账户的安全请及时验证邮箱</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <em class="fa fa-bell-o fa-2x text-danger"></em>
+                                        </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">加速</div>
+                                            <p class="m-0">
+                                                <span class="text-primary"></span> 本程序为您持续加速QQ任务</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- last list item -->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <small></small>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown user-box">
+                        <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown"
+                           aria-expanded="true">
+                            <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160" alt="user-img"
+                                 class="img-circle user-img">
+                            <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="{:url('profile')}"><i class="md md-edit"></i> 修改资料</a></li>
+                            {if condition="$userInfo.power eq 9"}
+                            <li><a href="{:url('index/Admin/index')}"><i class="md md-polymer"></i> 管理后台</a></li>
+                            {/if}
+                            {if condition="$userInfo.power gt 0"}
+                            <!--li><a href="{:url('daili')}"><i class="md md-control-point-duplicate"></i> 代理后台</a></li-->
+                            {/if}
+                            <li><a href="{:url('index/Index/logout')}" onclick="return confirm('确认退出登录？');"><i
+                                    class="md md-exit-to-app"></i> 安全退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="{:checkIfActive('index')}">
+                        <a href="{:url('index')}"><i class="md md-home"></i> <span>控制面板</span> </a>
+                    </li>
+
+					<li class="{:checkIfActive('qqadd,qqlist,order,qqinfo')} has-submenu">
+                        <a href="#"><i class="md md-invert-colors-on"></i> <span>代挂管理</span> </a>
+                        <ul class="submenu">
+                            <li><a href="{:url('qqAdd')}"><i class="fa fa-qq"></i> 添加QQ</a></li>
+                            <li><a href="{:url('qqList')}"><i class="fa fa-list-ul"></i> QQ列表</a></li>
+                            <li><a href="{:url('order')}"><i class="fa fa-plus-circle"></i> 自助下单</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{:checkIfActive('shop,recharge,rmblist')} has-submenu">
+                        <a href="#"><i class="fa fa-shopping-cart"></i> <span>在线商城</span> </a>
+                        <ul class="submenu">
+							<li><a href="{:url('shop')}"><i class="fa fa-trophy "></i> 自助开通VIP </a></li>
+                            <li><a href="{:url('recharge')}"><i class="fa fa-money "></i> 充值余额 </a></li>
+                            <!--li><a href="{:url('ybdh')}"><i class="md md-3d-rotation "></i> 元宝兑换 </a></li-->
+                            <li><a href="{:url('rmbList')}"><i class="md md-theaters "></i> 收支明细 </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{:checkIfActive('ktfz')} has-submenu">
+                        <a href="{:url('ktfz')}"><i class="md md-spellcheck"></i><span>开通分站</span> </a>
+                    </li>
+
+                    <li class="{:checkIfActive('rank')} has-submenu">
+                        <a href="#"><i class="md md-thumb-up"></i> <span>排行榜</span> </a>
+                        <ul class="submenu">
+                            <li><a href="{:url('rank',['kind'=>'invite'])}"><i class="fa fa-users"></i> 邀请人数排行榜</a></li>
+                            <li><a href="{:url('rank',['kind'=>'order'])}"><i class="fa fa-share-alt"></i> 分站订单排行榜</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{:checkIfActive('invite,qiandao,lye')} has-submenu">
+                        <a href="#"><i class="fa fa-hand-o-up"></i> <span>会员福利</span> </a>
+                        <ul class="submenu">
+                            <li><a href="{:url('invite')}"><i class="md md-verified-user "></i> 邀请好友</a></li>
+                            <li><a href="{:url('qiandao')}"><i class="fa fa-sign-in"></i> 每日签到</a></li>
+                            <!--li><a href="{:url('lye')}"><i class="fa fa-anchor"></i> 每日领余额</a></li-->
+                        </ul>
+                    </li>
+
+					<li class="{:checkIfActive('chat')} has-submenu">
+                        <a href="{:url('chat')}"><i class="fa fa-comments"></i><span>聊天室</span> </a>
+                    </li>
+					
+                    <li class="{:checkIfActive('help')} has-submenu">
+                        <a href="{:url('help')}"><i class="md md-help"></i><span>帮助中心</span> </a>
+                    </li>
+
+                </ul>
+                <!-- End navigation menu  -->
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End Navigation Bar-->

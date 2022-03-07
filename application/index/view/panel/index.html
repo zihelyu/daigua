@@ -1,0 +1,254 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li class="active">控制面板</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bx-shadow bg-info">
+            <span class="mini-stat-icon"><i class="fa fa-users"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.user}</span>
+                总用户数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日增加<span class="pull-right">{$amount.juser}</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-purple bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-qq"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.qq}</span>
+                站点总QQ数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jqq}</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-primary bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-arrow-circle-o-up"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.order}</span>
+                <a href="{:url('rank',['kind'=>'order'])}" style="color:white">站点总订单数</a>
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jorder}</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <div class="mini-stat clearfix bg-success bx-shadow">
+            <span class="mini-stat-icon"><i class="fa fa-share-alt"></i></span>
+            <div class="mini-stat-info text-right">
+                <span class="counter">{$amount.web}</span>
+                分站数
+            </div>
+            <div class="tiles-progress">
+                <div class="m-t-20">
+                    <h5 class="text-uppercase text-white m-0">今日新增加<span class="pull-right">{$amount.jweb}</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-danger">
+            <div class="panel-body">
+                {:getHtmlCode(config('web_gg_panel'))}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default panel-stat1 bg-success">
+                    <div class="panel-body">
+                        <div class="value">{$amount.zkm}</div>
+                        <div class="title">
+                            <span class="m-left-xs">已发出卡密数</span>
+                        </div>
+                    </div>
+                </div><!-- /panel -->
+            </div><!-- /.col -->
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default panel-stat2 bg-warning">
+                    <div class="panel-body">
+										<span class="stat-icon">
+											<i class="fa fa-user"></i>
+										</span>
+                        <div class="pull-right text-right">
+                            <div class="value">{$amount.user}</div>
+                            <div class="title">已注册用户</div>
+                        </div>
+                    </div>
+                </div><!-- /panel -->
+            </div><!-- /.col -->
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default panel-stat2 bg-info">
+                    <div class="panel-body">
+										<span class="stat-icon">
+											<i class="fa fa-envelope"></i>
+										</span>
+                        <div class="pull-right text-right">
+                            <div class="value">{$amount.order}</div>
+                            <div class="title">拥有订单数</div>
+                        </div>
+                    </div>
+                </div><!-- /panel -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                工作进展
+
+								<span class="badge badge-info pull-right">
+									4 left
+								</span>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>任务</th>
+                    <th>进步</th>
+                    <th></th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>代挂漏洞修补</td>
+                    <td>
+                        <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                            <div class="progress-bar" style="width: 45%">
+                                <span class="sr-only">45% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>45%</td>
+                    <td><span class="badge badge-info">2hr</span></td>
+                </tr>
+                <tr>
+                    <td>安卓版代挂开发</td>
+                    <td>
+                        <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                            <div class="progress-bar progress-bar-success" style="width: 61%">
+                                <span class="sr-only">61% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>61%</td>
+                    <td><span class="badge badge-info">1hr</span></td>
+                </tr>
+                <tr>
+                    <td>电脑版代挂开发</td>
+                    <td>
+                        <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                            <div class="progress-bar progress-bar-danger" style="width: 97%">
+                                <span class="sr-only">97% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>97%</td>
+                    <td><span class="badge badge-info">5m</span></td>
+                </tr>
+                <tr>
+                    <td>新的界面布局</td>
+                    <td>
+                        <div class="progress progress-striped active" style="height:8px; margin:5px 0 0 0;">
+                            <div class="progress-bar progress-bar-warning" style="width: 18%">
+                                <span class="sr-only">18% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td><span class="badge badge-info">12hr</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="text-center">
+                    <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160"
+                         class="img-circle circle-border" alt="profile" style="width: 100px;">
+                </h1>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseOne">
+                                    UID
+                                    <span class="badge badge-success pull-right">{$userInfo.uid}</span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div><!-- panel -->
+					<div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseOne">
+                                    等级
+                                    <span class="badge badge-warning pull-right">{$power}</span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div><!-- panel -->
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseOne">
+                                    余额
+                                    <span class="badge badge-warning pull-right">{$userInfo.point}元</span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div><!-- panel -->
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseOne">
+                                    绑定QQ
+                                    <span class="badge badge-success pull-right">{$userInfo.qq}</span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

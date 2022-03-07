@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{:config('web_title')}-{:config('web_name')}</title>		
+        <meta name="description" content="{:config('web_description')}">
+        <meta name="keywords" content="{:config('web_keywords')}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/Index/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="assets/Index/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/Index/css/owl.carousel.css">
+        <link rel="stylesheet" href="assets/Index/css/slit-slider.css">
+        <link rel="stylesheet" href="assets/Index/css/main.css">
+        <link type="image/x-icon" rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABKUlEQVQ4jb3SzyvlURjH8VdYiKRrrh/ZzP9AtsJfwHYm1CT8ARQ7ljasLPwJmt1sLGz8aGzUdJMuM/KjFPmxkMRkgcV51O3mq1vKU6fO0znvz/N8nnP4xBjCbzzgHw4qBfNYwT2WMYIOnFQCt2IPRXTjF+bxHY9ZUA168AOnAefQjP0Q+YntcjCHCcnfc6xdNJTcaUcvnvCtvOp6tLWEaxTQiK4Qfy2yh9Xy6lUYxR2OsIk6jEUnnWGhiL9oyfI/IE17AsMBj0flgjT5tiy4DXO4KpnBIGrxp0TszfgSrZ1hQ/osz5iM/CLyviyBKdxKQ4M1XAZ0jtkQyfR+iOnY56OTOfSH8H8sZMGkd13EDG6kD/M1zkawhab3BI4l3zuS7/qy8+r34A/FC5cqTDh6ZYEVAAAAAElFTkSuQmCC">
+
+    </head>
+    <body id="body">
+        <div id="preloader">
+            <div class="loder-box">
+            	<div class="battery"></div>
+            </div>
+		</div>
+
+        <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+        <!--[if lt IE 9]><p style="text-align: center; color:#F33; margin:20px">亲爱的用户您当前使用的浏览器已经过时，无法正常浏览本平台，请升级浏览器后再来访问本站！你也可以<a href="http://www.google.cn/intl/zh-CN/chrome/browser/">点击下载谷歌Chome浏览器</a>，或者使用浏览器的极速模式</p><![endif]-->
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+                    </button>
+					<h1 class="navbar-brand">
+						<a href="#body"><img src="assets/Index/img/logo.png" height="48" width="48" alt="{:config('web_title')}-{:config('web_name')}"/></a>
+					</h1>
+                    <h1 class="navbar-brand navbar-right" style="font-size:24px; margin-top:5px; margin-left:-30px; text-transform:none; text-align:center;"><a href="#body">{:config('web_name')}<br><font size="+0">&nbsp;{$_SERVER['HTTP_HOST']}</font></a></h1>
+                </div>
+
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                
+                    <ul id="nav" class="nav navbar-nav">
+                        <li><a href="#body">主页</a></li>
+                        <li><a href="#service">功能介绍</a></li>
+                        <li><a href="#social">平台特点</a></li>
+                        <li><a href="#contact">关于本站</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{:url('query')}" target="_blank">订单查询</a></li>
+                    </ul>
+                </nav>
+				
+            </div>
+        </header>
+		<main class="site-content" role="main">
+		<section id="home-slider">
+            <div id="slider" class="sl-slider-wrapper">
+				<div class="sl-slider">
+					<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+						<div class="bg-img bg-img-1"></div>
+						<div class="slide-caption">
+                            <div class="caption-content">
+                            <h1>{:config('web_name')}</h1>
+                                <h2>快速无需等待，安全毋庸置疑</h2>
+                                <span>快速升级皇冠不是梦，一切尽在{:config('web_name')}!</span>
+								{if condition="isset($userInfo['uid'])"}
+								<a href="{:url('index/Panel/index')}" class="btn btn-blue btn-effect" style="margin-top:15px;">用户中心</a>
+								{else}
+								<a href="{:url('login')}" class="btn btn-blue btn-effect" style="margin-top:15px;">登录</a>
+								<a href="{:url('reg')}" class="btn btn-blue btn-effect" style="margin-top:15px;">注册</a>
+								{/if}
+								<span style="margin-top:40px;">把QQ托管给我们，一键开启代挂功能剩下的由我们来解决，来即刻解放双手吧！</span>
+                            </div>
+                        </div>
+					</div>
+				</div>
+                </div>
+			</div>
+		</section>
+			
+		<section id="service">
+			<div class="container">
+				<div class="row">
+                
+                    <div class="sec-title text-center wow animated fadeInDown">
+						<h2>功能介绍</h2>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-graduation-cap fa-3x"></i>
+							</div>
+							<h3>电脑管家</h3>
+							<p>登陆电脑管家代挂30分钟，领取1.0天成长值</p>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.3s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-music fa-3x"></i>
+							</div>
+							<h3>QQ音乐</h3>
+							<p>登陆QQ音乐秒领0.5天成长值 </p>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.6s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-bookmark fa-3x"></i>
+							</div>
+							<h3>勋章墙</h3>
+							<p>登陆PCQQ点亮勋章墙图标，领取0.2天成长值 </p>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-jpy fa-3x"></i>
+							</div>
+							
+							<h3>QQ钱包</h3>
+							<p>登陆QQ钱包进行签到，领取0.2天成长值 </p>							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+            <div style="width:100%; height:50px;"></div>
+			<div class="container">
+				<div class="row">
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-gamepad fa-3x"></i>
+							</div>
+							
+							<h3>QQ手游</h3>
+							<p>登陆爱消除App进行签到，领取0.2天成长值</p>							
+						</div>
+					</div>
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-tablet fa-3x"></i>
+							</div>
+							
+							<h3>手机QQ在线</h3>
+							<p>每天0点登陆手机QQ进行挂机在线，领取1.0天成长值 </p>							
+						</div>
+					</div>
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-desktop fa-3x"></i>
+							</div>
+							
+							<h3>电脑QQ在线</h3>
+							<p>每天0点登陆PcQQ进行登陆挂机2小时，领取0.5天成长值 </p>							
+						</div>
+					</div>
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-pencil-square fa-3x"></i>
+							</div>
+							
+							<h3>会员成长</h3>
+							<p>每天帮你领取会员成长值，加速会员快速升级！ </p>							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+        </section>
+
+		<section id="social" class="parallax">
+			<div class="overlay">
+				<div class="container" style="color:#FFF">
+					<div class="row">
+					
+						<div class="sec-title text-center white wow animated fadeInDown">
+							<h2>平台特点</h2>
+							<p></p>
+						</div>
+						
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fa fa-home fa-3x"></i>
+                                </div>
+                                <h3 style="color:#F36">一站式管理</h3>
+                                <p>使用{:config('web_name')}进行挂机，无需安装任何额外软件，注册登陆后添加QQ即可正常运行，您可以随时在电脑/手机/平板登陆本网站进行功能设置 </p>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.3s">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fa fa-tasks fa-3x"></i>
+                                </div>
+                                <h3 style="color:#F36">安全稳定</h3>
+                                <p>采用阿里云高安全服务器，保证用户账号安全，独家服务器秒级全能挂机，执行所有加速任务，快速稳定！ </p>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.6s">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fa fa-clock-o fa-3x"></i>
+                                </div>
+                                <h3 style="color:#F36">智能提醒服务</h3>
+                                <p>独家代挂异常邮件通知服务，{:config('web_name')}使用付费邮局进行发信，保证邮件的送达率，代挂异常让你即刻知晓 </p>
+                            </div>
+                        </div>
+                    
+						
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" >
+			<div class="container">
+				<div class="row">
+					
+					<div class="sec-title text-center wow animated fadeInDown">
+						<h2>关于平台</h2>
+					</div>
+					
+					<div class="col-md-6 contact-form wow animated fadeInLeft">
+						<address class="contact-details">
+							<h3>平台优势</h3>						
+							<p>我们的代挂服务器是以每月数百元的高价服务器搭建，稳定高速！<br>
+                            我们的页面，服务等，都是经过各种调试，各种努力，只为您有更好的体验！<br>
+                            我们的用户数据库是绝对加密的，我们也不会对用户密码就行记录，是你的第一选择！<br>
+                            </p>
+						</address>
+					</div>
+                    
+                    <div class="col-md-6 wow animated fadeInRight">
+						<address class="contact-details">
+							<h3>为什么要代挂</h3>						
+							<p>代挂可以让你的QQ升级快人一步，快速升级到皇冠不再是梦<br>
+                            让自己的QQ等级飞起来吧！刻不容缓，快加入我们，即刻拥有！<br>
+                            </p>
+						</address>
+					</div>
+		
+				</div>
+			</div>
+		</section>
+		
+		</main>
+		
+		<footer id="footer">
+			<div class="container">
+				<div class="row text-center">
+					<div class="footer-content">
+						<div class="wow animated fadeInDown">
+							<p>{:config('web_name')}</p>
+							<p>最稳定的代挂系统</p>
+						</div>
+						<p>Copyright &copy; 2016 <a href="http://{$_SERVER['HTTP_HOST']}/" title="{:config('web_name')}">{:config('web_name')}</a>-<a href="http://{$_SERVER['HTTP_HOST']}/" title="{:config('web_name')}" target="_blank">{$_SERVER['HTTP_HOST']}</a> </p>
+                        <!--p><a  href="http://www.miitbeian.gov.cn/"  target="_blank">京ICP备88888888号</a></p-->
+					</div>
+				</div>
+			</div>
+		</footer>
+        <script src="assets/Index/js/modernizr-2.6.2.min.js"></script>
+        <script src="assets/Index/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/Index/js/bootstrap.min.js"></script>
+        <script src="assets/Index/js/jquery.singlePageNav.min.js"></script>
+        <script src="assets/Index/js/jquery.fancybox.pack.js"></script>
+        <script src="assets/Index/js/owl.carousel.min.js"></script>
+        <script src="assets/Index/js/jquery.easing.min.js"></script>
+        <script src="assets/Index/js/jquery.slitslider.js"></script>
+        <script src="assets/Index/js/wow.min.js"></script>
+        <script src="assets/Index/js/main.js"></script>
+        <script></script>
+    </body>
+</html>
